@@ -32,24 +32,12 @@ thisdir = os.path.dirname( thisfile )
 sedroot = os.path.join( thisdir, 'data/models/' )
 
 
-registry.register_loader(Source,'z15G',load_timeseries_ascii_local,
-								args=[sedroot+'popIII-z15G.sed.restframe10pc.dat'],
-                                version='1.0',
-								meta={'snid':'z15G','type':'PopIII',
-                                      'subclass':subclass,'reference':ref,
-                                      'note':note})
+for mod in ['z15B','z15D','z15G','z25B','z25D','z25G','z40B','z40G'] :
 
-registry.register_loader(Source,'z25G',load_timeseries_ascii_local,
-								args=[sedroot+'popIII-z25G.sed.restframe10pc.dat'],
-                                version='1.0',
-								meta={'snid':'z25G','type':'PopIII',
-                                      'subclass':subclass,'reference':ref,
-                                      'note':note})
+    registry.register_loader(Source,mod,load_timeseries_ascii_local,
+                             args=[sedroot+'popIII-%s.sed.restframe10pc.dat'%mod],
+                             version='1.0',
+                             meta={'snid':mod,'type':'PopIII',
+                                   'subclass':subclass,'reference':ref,
+                                   'note':note})
 
-
-registry.register_loader(Source,'z40G',load_timeseries_ascii_local,
-								args=[sedroot+'popIII-z40G.sed.restframe10pc.dat'],
-                                version='1.0',
-								meta={'snid':'z40G','type':'PopIII',
-                                      'subclass':subclass,'reference':ref,
-                                      'note':note})
